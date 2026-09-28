@@ -1,9 +1,9 @@
 const CSV_FILE = "FAC1 - Business Name - Overview.csv";
 
-// CSV filenames such as "cafe.jpg" and "m1.jpg" are loaded from images/.
-const IMAGE_FOLDER = "images/";
-const DEFAULT_BG_IMAGE = "images/shops/office.jpg";
-const DEFAULT_AVATAR_IMAGE = "images/avatars/avatar.png";
+// CSV filenames such as "cafe.jpg" and "m1.jpg" are loaded from Images/.
+const IMAGE_FOLDER = "Images/";
+const DEFAULT_BG_IMAGE = "Images/shops/office.jpg";
+const DEFAULT_AVATAR_IMAGE = "Images/avatars/avatar.png";
 
 const state = { businesses: [], selectedIndex: -1 };
 
@@ -171,12 +171,12 @@ function preloadImage(src) {
 function getProfileImagePaths(business) {
   return {
     backgroundPath: resolveImagePath(
-      `images/shops/${business["BG Image"]}.jpg`,
+      `Images/shops/${business["BG Image"]}.jpg`,
       DEFAULT_BG_IMAGE
     ),
 
     avatarPath: resolveImagePath(
-      `images/avatars/${business["Avatar Image"]}.png`,
+      `Images/avatars/${business["Avatar Image"]}.png`,
       DEFAULT_AVATAR_IMAGE
     )
   };

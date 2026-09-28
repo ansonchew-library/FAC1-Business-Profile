@@ -170,15 +170,18 @@ function preloadImage(src) {
 
 function getProfileImagePaths(business) {
   return {
-    backgroundPath: resolveImagePath(
-      `Images/shops/${business["BG Image"]}.jpg`,
-      DEFAULT_BG_IMAGE
-    ),
+    // backgroundPath: resolveImagePath(
+    //   `Images/shops/${business["BG Image"]}.jpg`,
+    //   DEFAULT_BG_IMAGE
+    // ),
 
-    avatarPath: resolveImagePath(
-      `Images/avatars/${business["Avatar Image"]}.png`,
-      DEFAULT_AVATAR_IMAGE
-    )
+    // avatarPath: resolveImagePath(
+    //   `Images/avatars/${business["Avatar Image"]}.png`,
+    //   DEFAULT_AVATAR_IMAGE
+    // )
+
+    backgroundPath: `Images/shops/${business["BG Image"]}.jpg`,
+    avatarPath: `Images/avatars/${business["Avatar Image"]}.png`,
   };
 }
 

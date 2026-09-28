@@ -1,9 +1,9 @@
 const CSV_FILE = "FAC1 - Business Name - Overview.csv";
 
-// CSV filenames such as "cafe.jpg" and "m1.jpg" are loaded from Images/.
-const IMAGE_FOLDER = "Images/";
-const DEFAULT_BG_IMAGE = "Images/shops/office.jpg";
-const DEFAULT_AVATAR_IMAGE = "Images/avatars/avatar.png";
+// CSV filenames such as "cafe.jpg" and "m1.jpg" are loaded from images/.
+const IMAGE_FOLDER = "images/";
+const DEFAULT_BG_IMAGE = "images/shops/office.jpg";
+const DEFAULT_AVATAR_IMAGE = "images/avatars/avatar.png";
 
 const state = { businesses: [], selectedIndex: -1 };
 

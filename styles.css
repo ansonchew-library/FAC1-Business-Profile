@@ -77,7 +77,7 @@ img {
    PAGE LAYOUT
 ========================================== */
 
-.portfolio-page {
+.profile-page {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(480px, var(--panel-width));
   width: 100%;
@@ -1081,7 +1081,7 @@ img {
     --panel-width: 47%;
   }
 
-  .portfolio-page {
+  .profile-page {
     grid-template-columns: minmax(0, 1fr) minmax(450px, var(--panel-width));
   }
 
@@ -1111,7 +1111,7 @@ img {
     overflow: auto;
   }
 
-  .portfolio-page {
+  .profile-page {
     display: block;
     min-height: 100vh;
   }
@@ -1660,8 +1660,8 @@ img {
   will-change: opacity;
 }
 
-.portfolio-page.profile-switching .visual-panel,
-.portfolio-page.profile-switching .information-panel__content {
+.profile-page.profile-switching .visual-panel,
+.profile-page.profile-switching .information-panel__content {
   opacity: 0;
 }
 
@@ -1669,12 +1669,12 @@ img {
    PROFILE CONTENT TRANSITION
 ========================================== */
 
-.portfolio-page.profile-switching {
+.profile-page.profile-switching {
   pointer-events: none;
 }
 
 /* Keep the search bar visible and usable-looking */
-.portfolio-page.profile-switching .profile-search-bar {
+.profile-page.profile-switching .profile-search-bar {
   opacity: 1;
 }
 

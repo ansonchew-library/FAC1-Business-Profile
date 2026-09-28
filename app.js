@@ -314,7 +314,7 @@ function populateProfile(business, images) {
   $("#profileSuggestions").hidden = true;
 
   document.title =
-    `${business["Business Name"]} | FAC Business Portfolio`;
+    `${business["Business Name"]} | FAC Business Profile`;
 }
 
 function waitForProfileFade(duration) {
@@ -333,7 +333,7 @@ function showHome(updateHistory = true) {
   $("#homeSuggestions").hidden = true;
   $("#profileSearchInput").value = "";
   $("#profileSuggestions").hidden = true;
-  document.title = "Facgle Search | Business Portfolio";
+  document.title = "Facgle Search | Business Profile";
   if (updateHistory) history.pushState({}, "", location.pathname);
   setTimeout(() => $("#homeSearchInput").focus(), 0);
 }

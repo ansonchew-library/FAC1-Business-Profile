@@ -249,32 +249,71 @@ async function openProfile(
     populateProfile(business, images);
   } else {
     /*
-    * Load the new images while the current profile remains visible.
-    */
-    const images = await imagePromise;
-
-    if (transitionID !== profileTransitionID) return;
-
-    /*
-    * Now begin the fade-out.
-    */
+     * Start the visual transition immediately instead of waiting for
+     * the new background/avatar images to finish loading first.
+     */
     profilePage.classList.add("profile-switching");
 
+    let loadedImages = null;
+    let imagesReady = false;
+
+    imagePromise.then(images => {
+      if (transitionID !== profileTransitionID) return;
+
+      loadedImages = images;
+      imagesReady = true;
+
+      /*
+       * If the profile has already been shown, update only the images
+       * when they finish loading. This prevents the UI from feeling
+       * stuck while waiting for image files.
+       */
+      if (!profilePage.classList.contains("profile-switching")) {
+        updateProfileImages(business, images);
+      }
+    });
+
+    /*
+     * Keep the existing 200ms fade, but do it in parallel with image
+     * loading. The text/content can therefore change immediately.
+     */
     await waitForProfileFade(200);
 
     if (transitionID !== profileTransitionID) return;
 
     resetProfileView();
-    populateProfile(business, images);
 
     /*
-    * Ensure the updated content is painted before fading in.
-    */
+     * Use the new images if they are already ready. Otherwise show the
+     * new profile immediately with the existing fallback images; the
+     * real images will replace them as soon as they finish loading.
+     */
+    populateProfile(
+      business,
+      imagesReady
+        ? loadedImages
+        : {
+            backgroundPath: DEFAULT_BG_IMAGE,
+            avatarPath: DEFAULT_AVATAR_IMAGE
+          }
+    );
+
+    /*
+     * Ensure the updated content is painted before fading in.
+     */
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         if (transitionID !== profileTransitionID) return;
 
         profilePage.classList.remove("profile-switching");
+
+        /*
+         * If the images were still loading, apply them now if they
+         * have completed during the transition.
+         */
+        if (loadedImages) {
+          updateProfileImages(business, loadedImages);
+        }
       });
     });
   }
